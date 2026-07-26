@@ -10,8 +10,8 @@ export interface ThemeColors {
   card: string;
   border: string;
 
-  text: string;
-  textSecondary: string;
+  primaryText: string;
+  secondaryText: string;
 
   success: string;
   warning: string;
@@ -49,8 +49,8 @@ const darkTheme: ThemeColors = {
   surface: '#18181B',
   card: '#18181B',
   border: '#3F3F46',
-  text: '#FFFFFF',
-  textSecondary: '#A1A1AA',
+  primaryText: '#FFFFFF',
+  secondaryText: '#A1A1AA',
   success: '#22C55E',
   warning: '#F59E0B',
   error: '#EF4444',
@@ -64,8 +64,8 @@ const lightTheme: ThemeColors = {
   surface: '#FFFFFF',
   card: '#F3F4F6',
   border: '#E5E7EB',
-  text: '#09090B',
-  textSecondary: '#6B7280',
+  primaryText: '#09090B',
+  secondaryText: '#6B7280',
   success: '#22C55E',
   warning: '#F59E0B',
   error: '#EF4444',

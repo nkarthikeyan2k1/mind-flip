@@ -101,7 +101,7 @@ export default function Index() {
 
         <Text style={styles.span}>v1.0 Premium Brain Training</Text>
         <Link href="/home" asChild>
-          <Text style={{ color: "white" }}>Next</Text>
+          <Text style={{ color: "white", textDecorationLine:'underline' }}>Home</Text>
         </Link>
       </View>
     </View>

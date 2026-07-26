@@ -1,12 +1,25 @@
-import { View, Text, Image, Alert, FlatList } from "react-native";
+import { View, Text, Image, Alert, FlatList, Pressable } from "react-native";
 import styleSheet from "./index.style";
 import { useStyles } from "@/hooks/useStyles";
 import Button from "@/globals/components/Button";
 import Card from "@/components/HomeComponents/GameDetails/Card";
 import { ImageMap } from '@/assets/ImageMap';
-import { ChevronRight, Lock } from 'lucide-react-native';
+import { ArrowRight, Brain, ChevronRight, Lock } from 'lucide-react-native';
+import { useState, ReactNode } from "react";
+import { useRouter, Href } from "expo-router";
 
-const cardsData = [
+interface CardItem {
+    id: number;
+    title: string;
+    description: string;
+    badgeText: string;
+    image: any;
+    is_disabled: boolean;
+    right_icon: ReactNode;
+    route?: any;
+}
+
+const cardsData: CardItem[] = [
     {
         id: 1,
         title: "Number Memory",
@@ -14,7 +27,8 @@ const cardsData = [
         badgeText: "AVAILABLE",
         image: ImageMap.assets.numberGame,
         is_disabled: false,
-        right_icon: <ChevronRight color="#3B82F6" size={18} />
+        right_icon: <ChevronRight color="#3B82F6" size={18} />,
+        route: '/(root)/games/number-memory'
     },
     {
         id: 2,
@@ -47,6 +61,8 @@ const cardsData = [
 
 const Home = () => {
     const styles = useStyles(styleSheet);
+    const [selectedGame, setSelectedGame] = useState<number | null>(1);
+    const route = useRouter();
   return (
     <View style={styles.container}>
         <View style={styles.headerContainer}>
@@ -56,9 +72,13 @@ const Home = () => {
             <Text style={styles.title}>your best score.</Text>
         </View>
         <View style={styles.bodyContainer}>
+            <Text style={{...styles.title, marginBottom: 10}}>GAMES</Text>
             <FlatList
                 data={cardsData}
                 renderItem={({ item }) => (
+                    <Pressable
+                        disabled={item.is_disabled}
+                        onPress={() => setSelectedGame(item.id)}>
                     <Card
                         title={item.title}
                         description={item.description}
@@ -66,7 +86,9 @@ const Home = () => {
                         image={item.image}
                         is_disabled={item.is_disabled}
                         right_icon={item.right_icon}
+                        is_active={selectedGame === item.id}                        
                     />
+                    </Pressable>
                 )}
                 keyExtractor={(item) => item.id.toString()}
             />
@@ -74,7 +96,18 @@ const Home = () => {
         <View style={styles.fooderContainer}>
             <Button 
                     title="Start Playing" 
-                    onPress={() => {}} 
+                    iconLeft={
+                        <Brain color="white" size={18} />
+                    }
+                    iconRight={
+                        <ArrowRight color="white" size={18} />
+                    }
+                    onPress={() => {
+                        const selectedCard = cardsData.find((card) => card.id === selectedGame);
+                        if (selectedCard?.route) {
+                            route.push(selectedCard.route);
+                        }
+                    }}
                     styles={styles.button}
                 />
         </View>

@@ -10,7 +10,7 @@ export const styleSheet = (theme: ThemeColors) =>
     },
 
     header: {
-      color: theme.text,
+      color: theme.primaryText,
       fontSize: 44,
       fontWeight: "700",
       lineHeight: 48,
@@ -19,7 +19,7 @@ export const styleSheet = (theme: ThemeColors) =>
     },
 
     title: {
-      color: theme.text,
+      color: theme.primaryText,
       fontSize: 14,
       letterSpacing: 3,
       lineHeight:24,
@@ -117,7 +117,7 @@ logo: {
 },
 
     span: {
-      color: theme.textSecondary,
+      color: theme.secondaryText,
       fontSize: 12,
       lineHeight: 16, 
       letterSpacing: 0.3

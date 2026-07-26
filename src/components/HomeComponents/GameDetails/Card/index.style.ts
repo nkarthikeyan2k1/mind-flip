@@ -19,7 +19,7 @@ export const styleSheet = (theme:ThemeColors) => StyleSheet.create({
     description: {
         fontSize: 12,
         fontWeight: "regular",
-        color: theme.textSecondary,
+        color: theme.secondaryText,
         lineHeight: 17,
     },
 
@@ -48,6 +48,7 @@ iconContainer: {
 content: {
   flex: 1,
   marginHorizontal: 16,
+  gap: 5,
 },
 header: {
   flexDirection: "row",
@@ -63,13 +64,12 @@ badge: {
   borderWidth:1,
   borderColor: '#244A90',
 
-//   backgroundColor: "#b9c4d5ff",
   backgroundColor: "rgba(59,130,246,0.125)"
 },
 badgeText: {
   fontSize: 9,
   fontWeight: "800",
-  color: "#3B82F6",
+  color: theme.primary
 },
 right: {
   justifyContent: "center",
@@ -78,6 +78,15 @@ right: {
 layout: {
     flex:1,
     width:80,
+},
+
+activeIcon: {
+  backgroundColor: theme.primary,
+  padding: 5,
+  left: -5,
+  position: 'absolute',
+  height: 65,
+  borderRadius: 5
 }
 
 })

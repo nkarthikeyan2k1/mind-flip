@@ -6,6 +6,9 @@ export const styleSheet = (theme: ThemeColors) => StyleSheet.create({
         padding: 12,
         borderRadius: 8,
         alignItems: "center",
+        flexDirection: "row",
+        justifyContent: "center",
+        gap: 8,
         backgroundColor: theme.primary,
     },
     buttonText: {
@@ -13,10 +16,10 @@ export const styleSheet = (theme: ThemeColors) => StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
     },
-    // buttonDisabled: {
-    //     backgroundColor: theme.disabled,
-    // },
-    // buttonTextDisabled: {
-    //     color: theme.disabledText,
-    // },
+    buttonDisabled: {
+        backgroundColor: theme.border,
+    },
+    buttonTextDisabled: {
+        color: theme.primaryText,
+    },
 });

@@ -10,7 +10,7 @@ const styleSheet = (theme: ThemeColors) => StyleSheet.create({
   },
 
   header: {
-    color: theme.text,
+    color: theme.primaryText,
     fontSize: 30,
     fontWeight: "800",
     lineHeight: 34,
@@ -19,7 +19,7 @@ const styleSheet = (theme: ThemeColors) => StyleSheet.create({
   },
 
   title: {
-    color: theme.textSecondary,
+    color: theme.secondaryText,
     fontSize: 14,
     lineHeight: 22,
     fontWeight: "500",
@@ -124,10 +124,10 @@ const styleSheet = (theme: ThemeColors) => StyleSheet.create({
     right: -20,
     bottom: -20,
     borderRadius: 90,
-    backgroundColor: "#3B82F6",
+    backgroundColor: theme.primary,
     opacity: 0.2,
     zIndex: 1,
-    shadowColor: "#3B82F6",
+    shadowColor: theme.primary,
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.2,
     shadowRadius: 35,
@@ -141,10 +141,15 @@ const styleSheet = (theme: ThemeColors) => StyleSheet.create({
   },
 
   span: {
-    color: theme.textSecondary,
+    color: theme.secondaryText,
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: 0.3
+  },
+
+  active: {
+    backgroundColor: theme.primary,
+    padding: 5,
   },
 
 });
