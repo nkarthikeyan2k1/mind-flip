@@ -1,5 +1,7 @@
+import Header from '@/components/GamesComponents/NumberMemory/Header';
 import { useThemeContext } from '@/context/ThemeContext';
 import { Stack } from 'expo-router'
+import { View } from 'lucide-react-native';
 
 const GamesLayout = () => {
     const { theme } = useThemeContext()
@@ -17,13 +19,13 @@ const GamesLayout = () => {
             },
             headerTitleStyle: { color: primaryText, fontSize: 14 },
             headerTintColor: primaryText,   
-            // statusBarStyle: "dark",
+            statusBarStyle: 'dark',
           }}
     >
         <Stack.Screen 
             name="number-memory"
             options={{
-                headerShown: false,
+                header: () => <Header showBack={true} />
             }}
          />
     </Stack>

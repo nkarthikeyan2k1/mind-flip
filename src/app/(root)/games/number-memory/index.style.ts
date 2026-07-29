@@ -3,6 +3,8 @@ import { ThemeColors } from "@/theme/color";
 
 export const styleSheet = (theme: ThemeColors) =>
   StyleSheet.create({
-
-    
+    container: {
+      flex: 1,
+      backgroundColor: theme.background,
+    }
   });

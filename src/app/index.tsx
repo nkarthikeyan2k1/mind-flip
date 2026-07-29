@@ -2,6 +2,7 @@ import { ImageMap } from "@/assets/ImageMap";
 import Glow from "@/globals/components/Gradient/Gradient";
 import GradientText from "@/globals/components/GradientText/GradientText";
 import { useStyles } from "@/hooks/useStyles";
+import { styleSheet } from "@/components/RootStyles/landing.style";
 import { Link, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { Image, Text, View } from "react-native";
@@ -13,7 +14,6 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { styleSheet } from "./index.style";
 
 export default function Index() {
   const styles = useStyles(styleSheet);
@@ -55,7 +55,7 @@ export default function Index() {
     // );
     setTimeout(() => {
       router.push("/(root)/home");
-    }, 1000);
+    }, 2500);
   }, []);
 
   const animatedStyle = useAnimatedStyle(() => ({

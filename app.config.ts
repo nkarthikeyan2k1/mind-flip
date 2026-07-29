@@ -14,6 +14,19 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     icon: "./assets/expo.icon",
     bundleIdentifier: "com.karthikeyan.mindflip",
+    infoPlist: {
+      UIViewControllerBasedStatusBarAppearance: true,
+      LSApplicationQueriesSchemes: ["whatsapp", "tel"],
+      ITSAppUsesNonExemptEncryption: false,
+      NSAppTransportSecurity: {
+        NSExceptionDomains: {
+          "local.com": {
+            NSIncludesSubdomains: true,
+            NSExceptionAllowsInsecureHTTPLoads: true,
+          },
+        },
+      },
+    },
   },
   android: {
     adaptiveIcon: {

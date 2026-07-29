@@ -3,7 +3,7 @@ import { styleSheet } from "./index.style";
 import { useStyles } from "@/hooks/useStyles";
 
 type ButtonProps = {
-    title: string
+    title?: string
     onPress: () => void
     disabled?: boolean
     style?: StyleProp<ViewStyle>;
@@ -61,7 +61,7 @@ const Button = ({
   return (
     <Pressable style={resolvedContainerStyle} disabled={disabled} onPress={onPress}>
       {iconLeft}
-      <Text style={resolvedTextStyle}>{title}</Text>
+      {title && <Text style={resolvedTextStyle}>{title}</Text>}
       {iconRight}
     </Pressable>
   );
