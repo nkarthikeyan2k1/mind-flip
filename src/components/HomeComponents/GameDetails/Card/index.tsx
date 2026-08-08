@@ -1,5 +1,6 @@
 import { useStyles } from "@/hooks/useStyles";
-import { Image, ImageRequireSource, Text, View, ViewProps } from "react-native";
+import { Image, ImageRequireSource, View, ViewProps } from "react-native";
+import { CustomText } from "@/globals/components/CustomText";
 import { styleSheet } from "./index.style";
 
 interface CardProps {
@@ -38,16 +39,16 @@ const Card = ({
       {/* Middle */}
       <View style={styles.content}>
         <View style={styles.header}>
-          <Text style={styles.title}>{title}</Text>
+          <CustomText style={styles.title}>{title}</CustomText>
 
           {badgeText != "" && (
             <View style={styles.badge}>
-              <Text style={styles.badgeText}>{badgeText}</Text>
+              <CustomText style={styles.badgeText}>{badgeText}</CustomText>
             </View>
           )}
         </View>
 
-        <Text style={styles.description}>{description}</Text>
+        <CustomText style={styles.description}>{description}</CustomText>
       </View>
 
       {/* Right */}

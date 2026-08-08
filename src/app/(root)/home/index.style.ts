@@ -31,43 +31,21 @@ const styleSheet = (theme: ThemeColors) => StyleSheet.create({
     flex: 5,
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: 'red'
   },
 
   bodyContainer: {
     flex: 6,
-    // justifyContent: "center",
-    // alignItems: "center",
-    // backgroundColor:'green'
   },
 
   fooderContainer: {
     flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
-    // gap: 20,
-    // backgroundColor:'blue'
   },
 
   button: {
-    // borderBottomLeftRadius:0,
-    // borderBottomRightRadius:0
     borderRadius: 18,
     paddingVertical:18,
 
-    shadowColor: 'white',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.3,
-    shadowRadius: 15,
-      
-    // backgroundColor: 'white',
-    // boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)', 
-
-    elevation: 2,
-    // shadowColor: '#FFFF',
-    // shadowOffset: { width: 0, height: 0 },
-    // shadowOpacity: 0.5,
-    // shadowRadius: 5,
+    backgroundColor:'#2563EB',
   },
 
   card: {
@@ -93,29 +71,6 @@ const styleSheet = (theme: ThemeColors) => StyleSheet.create({
     alignItems: "center",
     overflow: "visible",
   },
-
-  // logoContainer: {
-  //   width: 220,
-  //   height: 220,
-  //   borderRadius: 20,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-
-  // glow: {
-  // position: "absolute",
-  // width: 180,
-  // height: 180,
-  // borderRadius: 90,
-  // backgroundColor: "#3B82F6",
-  // opacity: 0.45,
-  // },
-
-  // logo: {
-  //   width: 120,
-  //   height: 120,
-  //   resizeMode: 'contain'
-  // },
 
   glow: {
     position: "absolute",

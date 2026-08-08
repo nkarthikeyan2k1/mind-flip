@@ -1,11 +1,12 @@
 import { ImageMap } from "@/assets/ImageMap";
-import Glow from "@/globals/components/Gradient/Gradient";
-import GradientText from "@/globals/components/GradientText/GradientText";
+import Glow from "@/globals/components/Gradient";
+import GradientText from "@/globals/components/GradientText";
 import { useStyles } from "@/hooks/useStyles";
 import { styleSheet } from "@/components/RootStyles/landing.style";
 import { Link, useRouter } from "expo-router";
 import { useEffect } from "react";
-import { Image, Text, View } from "react-native";
+import { Image, View } from "react-native";
+import { CustomText } from "@/globals/components/CustomText";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -89,19 +90,19 @@ export default function Index() {
         >
           MindFlip
         </GradientText>
-        <Text style={styles.title}>TRAIN YOUR MEMORY</Text>
+        <CustomText style={styles.title}>TRAIN YOUR MEMORY</CustomText>
       </View>
 
       <View style={styles.fooderContainer}>
         <View style={{ flexDirection: "row", gap: 8 }}>
-          <Text style={styles.loadingDots}></Text>
-          <Text style={styles.loadingDots}></Text>
-          <Text style={styles.loadingDots}></Text>
+          <CustomText style={styles.loadingDots}></CustomText>
+          <CustomText style={styles.loadingDots}></CustomText>
+          <CustomText style={styles.loadingDots}></CustomText>
         </View>
 
-        <Text style={styles.span}>v1.0 Premium Brain Training</Text>
+        <CustomText style={styles.span}>v1.0 Premium Brain Training</CustomText>
         <Link href="/home" asChild>
-          <Text style={{ color: "white", textDecorationLine:'underline' }}>Home</Text>
+          <CustomText style={{ color: "white", textDecorationLine:'underline' }}>Home</CustomText>
         </Link>
       </View>
     </View>

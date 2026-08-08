@@ -1,14 +1,17 @@
-import React from "react";
-import { Text, TextStyle, StyleProp } from "react-native";
 import MaskedView from "@react-native-masked-view/masked-view";
 import { LinearGradient, LinearGradientProps } from "expo-linear-gradient";
+import React from "react";
+import { StyleProp, TextStyle } from "react-native";
+import { CustomText } from "../CustomText";
 
 type Colors = readonly [string, string, ...string[]];
 type Start = {
-  x: number, y: number
+  x: number;
+  y: number;
 };
 type End = {
-  x: number, y: number
+  x: number;
+  y: number;
 };
 
 type Props = Omit<LinearGradientProps, "colors" | "start" | "end"> & {
@@ -24,24 +27,13 @@ export default function GradientText({
   style,
   colors,
   start,
-  end, 
+  end,
   ...props
 }: Props) {
   return (
-    <MaskedView
-      maskElement={
-        <Text style={style}>
-          {children}
-        </Text>
-      }
-    >
-      <LinearGradient
-        colors={colors}
-        start={start}
-        end={end}
-        {...props}
-      >
-        <Text
+    <MaskedView maskElement={<CustomText style={style}>{children}</CustomText>}>
+      <LinearGradient colors={colors} start={start} end={end} {...props}>
+        <CustomText
           style={[
             style,
             {
@@ -50,7 +42,7 @@ export default function GradientText({
           ]}
         >
           {children}
-        </Text>
+        </CustomText>
       </LinearGradient>
     </MaskedView>
   );

@@ -1,10 +1,11 @@
-import { View, Text, Image, Alert, FlatList, Pressable } from "react-native";
+import { View, Image, Alert, FlatList, Pressable } from "react-native";
+import { CustomText } from "@/globals/components/CustomText";
 import styleSheet from "./index.style";
 import { useStyles } from "@/hooks/useStyles";
 import Button from "@/globals/components/Button";
 import Card from "@/components/HomeComponents/GameDetails/Card";
 import { ImageMap } from '@/assets/ImageMap';
-import { ArrowRight, Brain, ChevronRight, Lock } from 'lucide-react-native';
+import { Brain, ChevronRight, Lock } from 'lucide-react-native';
 import { useState, ReactNode } from "react";
 import { useRouter, Href } from "expo-router";
 
@@ -67,12 +68,12 @@ const Home = () => {
     <View style={styles.container}>
         <View style={styles.headerContainer}>
             <Image source={ImageMap.assets.mindflip} style={styles.logo} />
-            <Text style={styles.header}>Challenge Your Brain</Text>
-            <Text style={styles.title}>Improve memory, increase focus, beat</Text>
-            <Text style={styles.title}>your best score.</Text>
+            <CustomText style={styles.header}>Challenge Your Brain</CustomText>
+            <CustomText style={styles.title}>Improve memory, increase focus, beat</CustomText>
+            <CustomText style={styles.title}>your best score.</CustomText>
         </View>
         <View style={styles.bodyContainer}>
-            <Text style={{...styles.title, marginBottom: 10}}>GAMES</Text>
+            <CustomText style={{...styles.title, marginBottom: 10}}>GAMES</CustomText>
             <FlatList
                 data={cardsData}
                 renderItem={({ item }) => (
@@ -97,10 +98,10 @@ const Home = () => {
             <Button 
                     title="Start Playing" 
                     iconLeft={
-                        <Brain color="white" size={18} />
+                        <Brain color="white" size={19} />
                     }
                     iconRight={
-                        <ArrowRight color="white" size={18} />
+                        <ChevronRight color="white" size={19} />
                     }
                     onPress={() => {
                         const selectedCard = cardsData.find((card) => card.id === selectedGame);

@@ -1,6 +1,7 @@
 import { useStyles } from '@/hooks/useStyles'
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
+import { CustomText } from '@/globals/components/CustomText'
 import { styleSheet } from './index.style'
 import { Clock4, Zap } from 'lucide-react-native'
 import { useRef, useState, useEffect } from 'react'
@@ -15,9 +16,9 @@ const Timer = () => {
     })
 
     useEffect(() => {
-        timerRef.current = setInterval(() => {
-            setTimerState(prev => ({...prev, seconds: prev.seconds + 1}))
-        }, 1000)
+        // timerRef.current = setInterval(() => {
+        //     setTimerState(prev => ({...prev, seconds: prev.seconds + 1}))
+        // }, 1000)
         return () => {
             if(timerRef.current) {
                 clearInterval(timerRef.current)
@@ -37,12 +38,12 @@ const Timer = () => {
   return (
     <View style={styles.container}>
       <View style={styles.timer}>
-        <Clock4 color="#3B82F6" size={18} strokeWidth={2} />
-        <Text style={styles.timerText}>{formatTime(timerState.minutes)}:{formatTime(timerState.seconds)}</Text>
+        <Clock4 color="#3B82F6" size={15} strokeWidth={2} />
+        <CustomText style={styles.timerText}>{formatTime(timerState.minutes)}:{formatTime(timerState.seconds)}</CustomText>
       </View>
       <View style={styles.moves}>
-        <Zap color="#F59E0B" size={18} strokeWidth={2} />
-        <Text style={styles.movesText}><Text style={{color:'gray'}}>Moves:</Text> {moves}</Text>
+        <Zap color="#F59E0B" size={15} strokeWidth={2} />
+        <CustomText style={styles.movesText}><CustomText style={{color:'gray'}}>Moves:</CustomText> {moves}</CustomText>
       </View>
     </View>
   )
