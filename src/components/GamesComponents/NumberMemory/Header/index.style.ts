@@ -36,5 +36,30 @@ export const styleSheet = (theme:ThemeColors) => StyleSheet.create({
         fontWeight: 'bold',
         color: theme.primaryText,
         lineHeight: 21,
-    }
+    },
+
+    modal: {
+        height: 310,
+        width: 270,
+        borderWidth:1,
+        borderColor:theme.white_10,
+        // paddingHorizontal:28,
+        // paddingVertical:32,
+    },
+    modalBody: {
+        backgroundColor:'green'
+    },
+    modalHeader: {
+        backgroundColor:'red',
+        alignItems:'center',
+    },
+    modalButton: {
+        width:210,
+        height:55,
+        borderRadius: 16,
+    },
+    modalFooter: {
+        alignItems:'center',
+        backgroundColor:'purple'
+    },
 })
