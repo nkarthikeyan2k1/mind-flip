@@ -48,7 +48,7 @@ export const CustomText = ({
     {
       fontFamily: fontFamily[getFontFamily()],
       fontSize: fontSize ?? 12,
-      lineHeight: (fontSize ?? 12) + 6,
+      // lineHeight: (fontSize ?? 12) + 6,
       color: theme.primaryText,
       margin: -1,
     },

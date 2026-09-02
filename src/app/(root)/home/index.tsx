@@ -79,7 +79,10 @@ const Home = () => {
                 renderItem={({ item }) => (
                     <Pressable
                         disabled={item.is_disabled}
-                        onPress={() => setSelectedGame(item.id)}>
+                        onPress={() => {
+                            setSelectedGame(item.id)
+                            if(item.route) route.push(item.route);
+                        }}>
                     <Card
                         title={item.title}
                         description={item.description}

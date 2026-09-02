@@ -61,37 +61,13 @@ export const styleSheet = (theme: ThemeColors) =>
     },
 
   logoContainer: {
-    width: 220,
-    height: 220,
+    width: 140,
+    height: 140,
     borderRadius: 20,
-
     justifyContent: "center",
     alignItems: "center",
     overflow: "visible",
   },
-
-// logoContainer: {
-//   width: 220,
-//   height: 220,
-//   borderRadius: 20,
-//   justifyContent: "center",
-//   alignItems: "center",
-// },
-
-// glow: {
-  // position: "absolute",
-  // width: 180,
-  // height: 180,
-  // borderRadius: 90,
-  // backgroundColor: "#3B82F6",
-  // opacity: 0.45,
-// },
-
-// logo: {
-//   width: 120,
-//   height: 120,
-//   resizeMode: 'contain'
-// },
 
 glow: {
     position: "absolute",

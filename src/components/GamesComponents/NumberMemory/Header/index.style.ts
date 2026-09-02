@@ -43,23 +43,25 @@ export const styleSheet = (theme:ThemeColors) => StyleSheet.create({
         width: 270,
         borderWidth:1,
         borderColor:theme.white_10,
-        // paddingHorizontal:28,
-        // paddingVertical:32,
+        paddingHorizontal:28,
+        paddingVertical:32,
+        gap: 20
     },
     modalBody: {
-        backgroundColor:'green'
+        gap: 14
     },
     modalHeader: {
-        backgroundColor:'red',
+        gap: 14,
         alignItems:'center',
     },
     modalButton: {
         width:210,
         height:55,
         borderRadius: 16,
+        borderWidth: 1,
+        borderColor:'transparent'
     },
     modalFooter: {
-        alignItems:'center',
-        backgroundColor:'purple'
+        marginTop: 10
     },
 })

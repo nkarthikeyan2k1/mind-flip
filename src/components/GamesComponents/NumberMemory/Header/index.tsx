@@ -7,6 +7,7 @@ import { ChevronLeft, Import, Pause, RotateCw, StepForward  } from "lucide-react
 import { useState } from "react";
 import { View } from "react-native";
 import { styleSheet } from "./index.style";
+import LevelCompleteModal from "@/globals/components/LevelCompleteModal";
 
 type HeaderProps = {
   showBack: boolean;
@@ -44,7 +45,14 @@ const Header = ({ showBack }: HeaderProps) => {
         />
       </View>
 
-      <Modal
+      <LevelCompleteModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        timeTaken="00:00"
+        stars={3}
+      />
+
+      {/* <Modal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
         modalStyle={styles.modal}
@@ -62,11 +70,8 @@ const Header = ({ showBack }: HeaderProps) => {
               iconLeft={<StepForward color={theme.white} size={18} />}
             />
             <Button 
-              style={[styles.modalButton,{
-                backgroundColor:theme.white_10, 
-                borderWidth:1, 
-                borderColor:theme.white_20
-              }]} 
+              style={[styles.modalButton,{ backgroundColor:theme.white_5 }]} 
+              textStyle={{color:theme.secondaryText}}
               title="Restart Level" 
               onPress={() => setModalVisible(false)} 
               iconLeft={<RotateCw color={theme.white} size={18} />}
@@ -80,7 +85,7 @@ const Header = ({ showBack }: HeaderProps) => {
             </Link>
           </View>
         )}
-      />
+      /> */}
     </>
   );
 };

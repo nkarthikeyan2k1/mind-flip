@@ -67,13 +67,12 @@ export default function Index() {
     // ],
   }));
   const insets = useSafeAreaInsets();
-
   return (
     <View style={styles.container}>
       <View style={styles.bodyContainer}>
         <Animated.View
           style={[
-            // styles.logoContainer,
+            styles.logoContainer,
             animatedStyle,
           ]}
         >

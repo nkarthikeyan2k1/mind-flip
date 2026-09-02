@@ -8,7 +8,7 @@ export const populateOpacityMixes = (colors: ThemeColors, keys: (keyof ThemeColo
     const color = colors[key];
     if (!color) return;
 
-    for (let percent = 10; percent <= 90; percent += 10) {
+    for (let percent = 5; percent <= 90; percent += 5) {
       mixedColors[`${String(key)}_${percent}` as keyof ThemeColors] = withOpacity(
         color,
         percent / 100

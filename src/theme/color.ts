@@ -1,7 +1,7 @@
 import { Platform } from "react-native";
 import { populateOpacityMixes } from "./helper";
 
-type WHITE_MIX = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
+type WHITE_MIX = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 
 type White_Mixed_Color_Keys =
   | `primary_${WHITE_MIX}`

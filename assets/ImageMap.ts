@@ -6,6 +6,7 @@ export const ImageMap = {
     numberGame: require("./number-game.png") as ImageRequireSource,
     dotGame: require("./dot-game.png") as ImageRequireSource,
     speedGame: require("./speed-game.png") as ImageRequireSource,
-    starsGame: require("./star-game.png") as ImageRequireSource
+    starsGame: require("./star-game.png") as ImageRequireSource,
+    level_complete: require("./level-complete.png") as ImageRequireSource
   }
 };
