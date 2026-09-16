@@ -1,13 +1,12 @@
 import Button from "@/globals/components/Button";
 import { CustomText } from "@/globals/components/CustomText";
-import Modal from "@/globals/components/Modal";
+import PauseModal from "@/globals/components/PauseModal";
 import { useStyles } from "@/hooks/useStyles";
-import { Link, useNavigation } from "expo-router";
-import { ChevronLeft, Import, Pause, RotateCw, StepForward  } from "lucide-react-native";
+import { useNavigation } from "expo-router";
+import { ChevronLeft, Pause } from "lucide-react-native";
 import { useState } from "react";
 import { View } from "react-native";
 import { styleSheet } from "./index.style";
-import LevelCompleteModal from "@/globals/components/LevelCompleteModal";
 
 type HeaderProps = {
   showBack: boolean;
@@ -15,7 +14,7 @@ type HeaderProps = {
 
 const Header = ({ showBack }: HeaderProps) => {
   const { styles, theme } = useStyles(styleSheet);
-  const navigaction = useNavigation();
+  const navigation = useNavigation();
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -27,7 +26,7 @@ const Header = ({ showBack }: HeaderProps) => {
           <Button
             iconLeft={<ChevronLeft color={theme.secondaryText} size={18} />}
             styles={styles.button}
-            onPress={() => navigaction.canGoBack() && navigaction.goBack()}
+            onPress={() => navigation.canGoBack() && navigation.goBack()}
           />
         )}
 
@@ -45,49 +44,13 @@ const Header = ({ showBack }: HeaderProps) => {
         />
       </View>
 
-      <LevelCompleteModal
+      <PauseModal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
-        timeTaken="00:00"
-        stars={3}
       />
-
-      {/* <Modal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        modalStyle={styles.modal}
-        headerComponent={() => (
-          <View style={styles.modalHeader}>
-            <CustomText style={{fontSize: 20, fontWeight:'bold', color:theme.primaryText}}>Paused</CustomText>
-            <CustomText style={{fontSize: 12, fontWeight:'regular', color:theme.secondaryText, letterSpacing: 1.1}}>LEVEL 2 OF 5</CustomText>
-          </View>
-        )}
-        bodyComponent={() => (
-          <View style={styles.modalBody}>
-            <Button 
-              style={styles.modalButton} 
-              title="Resume" onPress={() => setModalVisible(false)} 
-              iconLeft={<StepForward color={theme.white} size={18} />}
-            />
-            <Button 
-              style={[styles.modalButton,{ backgroundColor:theme.white_5 }]} 
-              textStyle={{color:theme.secondaryText}}
-              title="Restart Level" 
-              onPress={() => setModalVisible(false)} 
-              iconLeft={<RotateCw color={theme.white} size={18} />}
-            />
-          </View>
-        )}
-        footerComponent={() => (
-          <View style={styles.modalFooter}>
-            <Link href="/(root)/home" asChild>
-              <CustomText style={{ fontSize: 15, fontWeight:'regular', color:theme.secondaryText, textDecorationLine:'none' ,letterSpacing: 2, }}>Exit to Menu</CustomText>
-            </Link>
-          </View>
-        )}
-      /> */}
     </>
   );
 };
 
 export default Header;
+
