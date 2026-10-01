@@ -7,6 +7,7 @@ type ButtonProps = {
   title?: string;
   onPress: () => void;
   disabled?: boolean;
+  inactive?: boolean;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   styles?:
@@ -30,6 +31,7 @@ const Button = ({
   title,
   onPress,
   disabled,
+  inactive,
   style,
   textStyle,
   styles: customStyles,
@@ -52,7 +54,8 @@ const Button = ({
 
   const resolvedContainerStyle = [
     defaultStyles.button,
-    isStructured ? (customStyles as any).button : customStyles,
+    isStructured ? (customStyles as any).button : customStyles,   
+    (disabled || inactive) && defaultStyles.buttonDisabled, 
     style,
   ];
 

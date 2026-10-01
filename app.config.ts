@@ -12,6 +12,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: "mindflip",
   userInterfaceStyle: "automatic",
   ios: {
+    deploymentTarget: "16.4",
     icon: "./assets/expo.icon",
     bundleIdentifier: "com.karthikeyan.mindflip",
     infoPlist: {
@@ -44,6 +45,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   plugins: [
     "expo-router",
+    "expo-audio",
     [
       "expo-splash-screen",
       {
@@ -56,6 +58,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
       },
     ],
+    // Ensures all pods meet the minimum iOS 15.0 deployment target (required by react-native-svg 15+)
+    ["./plugins/withMinDeploymentTarget", { minVersion: "15.0" }],
   ],
   experiments: {
     typedRoutes: true,

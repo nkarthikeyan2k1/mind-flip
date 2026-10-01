@@ -1,33 +1,35 @@
 import { ImageMap } from "@/assets/ImageMap";
+import Button from "@/globals/components/Button";
 import Glow from "@/globals/components/Gradient";
 import Modal from "@/globals/components/Modal";
 import { useStyles } from "@/hooks/useStyles";
-import { useRouter } from "expo-router";
+import { ArrowRight, RotateCcw } from "lucide-react-native";
 import { Image, View } from "react-native";
 import { CustomText } from "../CustomText";
-import { styleSheet } from "../LevelCompleteModal/index.style";
+import { styleSheet } from "./index.style";
 
 interface LevelCompleteModalProps {
   visible: boolean;
   onClose: () => void;
-  timeTaken: string;
-  stars: number;
+  timeTaken?: string;
+  moves?: number;
+  level?: number;
+  isGameFinished?: boolean;
+  onNextLevel?: () => void;
+  onRestart?: () => void;
 }
 
 const LevelCompleteModal = ({
   visible,
   onClose,
   timeTaken,
-  stars,
+  moves,
+  level = 1,
+  isGameFinished = false,
+  onNextLevel,
+  onRestart,
 }: LevelCompleteModalProps) => {
   const { styles, theme } = useStyles(styleSheet);
-  const route = useRouter();
-
-  // useEffect(()=>{
-  //     setTimeout(()=>{
-  //         route.push('/(root)/home')
-  //     }, 3)
-  // }, [visible])
 
   if (!visible) return null;
 
@@ -39,7 +41,7 @@ const LevelCompleteModal = ({
       modalStyle={styles.modal}
       headerComponent={() => (
         <View style={styles.imageContainer}>
-          <Glow size={150} color="#336b20ff" opacity={0.5}>
+          <Glow size={130} color="#22C55E" opacity={0.4}>
             <Image
               source={ImageMap.assets.level_complete}
               style={styles.logo}
@@ -49,10 +51,32 @@ const LevelCompleteModal = ({
       )}
       bodyComponent={() => (
         <View style={styles.modalBody}>
-          <CustomText style={styles.title}>Level 2 Complete!</CustomText>
-          <CustomText fontSize={10} style={styles.lable}>
-            Advancing to Level 3...
+          <CustomText style={styles.title}>
+            {isGameFinished ? "All Levels Cleared!" : `Level ${level} Complete!`}
           </CustomText>
+          <CustomText style={styles.label}>
+            {timeTaken ? `Time: ${timeTaken}` : ""}
+            {timeTaken && moves !== undefined ? " • " : ""}
+            {moves !== undefined ? `Moves: ${moves}` : ""}
+          </CustomText>
+          {onNextLevel && !isGameFinished && (
+            <Button
+              title="Next Level"
+              onPress={onNextLevel}
+              iconRight={<ArrowRight color={theme.white} size={16} />}
+              style={styles.actionButton}
+              textStyle={{ fontSize: 13, fontWeight: "600" }}
+            />
+          )}
+          {isGameFinished && onRestart && (
+            <Button
+              title="Play Again"
+              onPress={onRestart}
+              iconLeft={<RotateCcw color={theme.white} size={16} />}
+              style={styles.actionButton}
+              textStyle={{ fontSize: 13, fontWeight: "600" }}
+            />
+          )}
         </View>
       )}
     />

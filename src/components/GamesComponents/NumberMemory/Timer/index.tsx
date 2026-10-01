@@ -1,52 +1,59 @@
-import { useStyles } from '@/hooks/useStyles'
-import React from 'react'
-import { View } from 'react-native'
-import { CustomText } from '@/globals/components/CustomText'
-import { styleSheet } from './index.style'
-import { Clock4, Zap } from 'lucide-react-native'
-import { useRef, useState, useEffect } from 'react'
+import React, { useEffect, useRef } from "react";
+import { View } from "react-native";
+import { Clock4, Zap } from "lucide-react-native";
+import { CustomText } from "@/globals/components/CustomText";
+import { useStyles } from "@/hooks/useStyles";
+import { useNumberMemoryStore } from "@/store/useNumberMemoryStore";
+import { padTime } from "@/utils/formatTime";
+import { styleSheet } from "./index.style";
 
 const Timer = () => {
-    const styles = useStyles(styleSheet)
-    const [moves, setMoves] = useState(0)
-    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
-    const [timerState, setTimerState] = useState({
-        seconds: 0,
-        minutes: 0,
-    })
+  const { styles } = useStyles(styleSheet);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-    useEffect(() => {
-        // timerRef.current = setInterval(() => {
-        //     setTimerState(prev => ({...prev, seconds: prev.seconds + 1}))
-        // }, 1000)
-        return () => {
-            if(timerRef.current) {
-                clearInterval(timerRef.current)
-            }
-        }
-    }, [])
+  const seconds = useNumberMemoryStore((state) => state.seconds);
+  const minutes = useNumberMemoryStore((state) => state.minutes);
+  const moves = useNumberMemoryStore((state) => state.moves);
+  const isPaused = useNumberMemoryStore((state) => state.isPaused);
+  const isLevelComplete = useNumberMemoryStore((state) => state.isLevelComplete);
+  const tickTimer = useNumberMemoryStore((state) => state.tickTimer);
 
-    useEffect(() => {
-        if(timerState.seconds === 60) {
-            setTimerState(prev => ({...prev, seconds: 0, minutes: prev.minutes + 1}))
-        }
-    }, [timerState.seconds])
-
-    const formatTime = (time: number) => {
-        return time < 10 ? `0${time}` : time
+  useEffect(() => {
+    if (!isPaused && !isLevelComplete) {
+      timerRef.current = setInterval(() => {
+        tickTimer();
+      }, 1000);
+    } else {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
     }
+
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [isPaused, isLevelComplete, tickTimer]);
+
   return (
     <View style={styles.container}>
       <View style={styles.timer}>
         <Clock4 color="#3B82F6" size={15} strokeWidth={2} />
-        <CustomText style={styles.timerText}>{formatTime(timerState.minutes)}:{formatTime(timerState.seconds)}</CustomText>
+        <CustomText style={styles.timerText}>
+          {padTime(minutes)}:{padTime(seconds)}
+        </CustomText>
       </View>
       <View style={styles.moves}>
         <Zap color="#F59E0B" size={15} strokeWidth={2} />
-        <CustomText style={styles.movesText}><CustomText style={{color:'gray'}}>Moves:</CustomText> {moves}</CustomText>
+        <CustomText style={styles.movesText}>
+          <CustomText style={{ color: "gray" }}>Moves:</CustomText> {moves}
+        </CustomText>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default Timer
+export default Timer;

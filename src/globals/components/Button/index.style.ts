@@ -17,7 +17,8 @@ export const styleSheet = (theme: ThemeColors) => StyleSheet.create({
         fontWeight: "bold",
     },
     buttonDisabled: {
-        backgroundColor: theme.border,
+        backgroundColor: theme.border_20,
+        opacity: 0.5
     },
     buttonTextDisabled: {
         color: theme.primaryText,

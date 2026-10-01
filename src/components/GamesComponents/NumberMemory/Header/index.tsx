@@ -2,9 +2,9 @@ import Button from "@/globals/components/Button";
 import { CustomText } from "@/globals/components/CustomText";
 import PauseModal from "@/globals/components/PauseModal";
 import { useStyles } from "@/hooks/useStyles";
+import { MAX_LEVEL, useNumberMemoryStore } from "@/store/useNumberMemoryStore";
 import { useNavigation } from "expo-router";
 import { ChevronLeft, Pause } from "lucide-react-native";
-import { useState } from "react";
 import { View } from "react-native";
 import { styleSheet } from "./index.style";
 
@@ -16,7 +16,11 @@ const Header = ({ showBack }: HeaderProps) => {
   const { styles, theme } = useStyles(styleSheet);
   const navigation = useNavigation();
 
-  const [modalVisible, setModalVisible] = useState(false);
+  const currentLevel = useNumberMemoryStore((state) => state.currentLevel);
+  const isPaused = useNumberMemoryStore((state) => state.isPaused);
+  const pauseGame = useNumberMemoryStore((state) => state.pauseGame);
+  const resumeGame = useNumberMemoryStore((state) => state.resumeGame);
+  const restartLevel = useNumberMemoryStore((state) => state.restartLevel);
 
   return (
     <>
@@ -31,26 +35,30 @@ const Header = ({ showBack }: HeaderProps) => {
         )}
 
         {/* Middle */}
-        <View>
+        <View style={{ alignItems: "center" }}>
           <CustomText style={styles.title}>MINDFLIP</CustomText>
-          <CustomText style={styles.subtitle}>Level 1 of 5</CustomText>
+          <CustomText style={styles.subtitle}>
+            Level {currentLevel} of {MAX_LEVEL}
+          </CustomText>
         </View>
 
         {/* Right */}
         <Button
           iconRight={<Pause color={theme.secondaryText} size={18} />}
           styles={styles.button}
-          onPress={() => setModalVisible(true)}
+          onPress={pauseGame}
         />
       </View>
 
       <PauseModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
+        visible={isPaused}
+        onClose={resumeGame}
+        onResume={resumeGame}
+        onRestart={restartLevel}
+        levelText={`LEVEL ${currentLevel} OF ${MAX_LEVEL}`}
       />
     </>
   );
 };
 
 export default Header;
-
