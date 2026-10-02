@@ -69,7 +69,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     router: {},
     appEnv: APP_ENV,
     eas: {
-      owner: "",
+      owner: "ig_karthi",
       projectId: "01802571-a568-4e12-83c1-5da71ca3fe4d",
     },
   },

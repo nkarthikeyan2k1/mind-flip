@@ -15,8 +15,16 @@
       }
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "environment": "development",
+      "android": {
+        "buildType": "apk"
+      }
     },
-    "production": {}
+    "production": {
+      "credentialsSource": "remote",
+      "channel": "production",
+      "environment": "production"
+    }
   }
 }
