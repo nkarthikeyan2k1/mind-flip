@@ -174,6 +174,7 @@ const NumberMemory = () => {
         isGameFinished={isGameFinished}
         onNextLevel={nextLevel}
         onRestart={restartLevel}
+        autoNextLevel={true}
       />
     </View>
   );

@@ -8,12 +8,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   slug: "mind-flip",
   version: "1.0.0",
   orientation: "portrait",
-  icon: "./assets/images/icon.png",
+  icon: "./assets/mind-flip.png",
   scheme: "mindflip",
   userInterfaceStyle: "automatic",
   ios: {
     deploymentTarget: "16.4",
-    icon: "./assets/expo.icon",
+    icon: "./assets/mind-flip.png",
     bundleIdentifier: "com.karthikeyan.mindflip",
     infoPlist: {
       UIViewControllerBasedStatusBarAppearance: true,
@@ -36,6 +36,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundImage: "./assets/images/android-icon-background.png",
       monochromeImage: "./assets/images/android-icon-monochrome.png",
     },
+    icon: "./assets/mind-flip.png",  // fallback for older Android phones
     package: "com.karthikeyan.mindflip",
     predictiveBackGestureEnabled: false,
   },
